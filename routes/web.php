@@ -27,3 +27,12 @@ Route::get('/edit-data-pelanggan/{pelanggan}', 'PelangganController@edit')->name
 Route::patch('/edit-data-pelanggan/{pelanggan}', 'PelangganController@update')->name('pelanggan.update');
 Route::delete('/hapus-data-pelanggan/{pelanggan}', 'PelangganController@destroy')->name('pelanggan.destroy');
 Route::get('/laporan-pelanggan/{pelanggan}', 'PelangganController@pdf')->name('pelanggan.pdf');
+
+//Permintaan
+Route::get('/data-permintaan', 'PermintaanController@index')->name('permintaan.index');
+Route::get('/tambah-permintaan', 'PermintaanController@create')->name('permintaan.create');
+Route::post('/tambah-permintaan', 'PermintaanController@store')->name('permintaan.store');
+Route::get('/edit-data-permintaan/{permintaan}', 'PermintaanController@edit')->name('permintaan.edit');
+Route::patch('/edit-data-permintaan/{permintaan}', 'PermintaanController@update')->name('permintaan.update');
+Route::delete('/hapus-data-permintaan/{permintaan}', 'PermintaanController@destroy')->name('permintaan.destroy');
+Route::get('/laporan-pelanggan/{pelanggan}', 'PelangganController@pdf')->name('pelanggan.pdf');

@@ -10,4 +10,9 @@ class Kategori extends Model
     {
     	return $this->hasOne('App\Analisa');
     }
+
+	public function permintaa()
+    {
+    	return $this->belongsTo('App\Permintaan');
+    }    
 }

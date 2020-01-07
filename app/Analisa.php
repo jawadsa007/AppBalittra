@@ -10,4 +10,9 @@ class Analisa extends Model
     {
     	return $this->belongsTo('App\Kategori');
     }
+
+    public function permintaan()
+    {
+    	return $this->belongsToMany('App\Permintaan');
+    }
 }
