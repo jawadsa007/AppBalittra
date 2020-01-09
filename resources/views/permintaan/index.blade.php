@@ -43,21 +43,21 @@ Data Permintaan
                     <a class="dropdown-item" href="{{ route('permintaan.sedang') }}" target="_blank">Selesai</a>
                   </div>
                 </div>
-                <a class="btn btn-primary btn-sm" href="{{ route('pelanggan.create') }}"><i class="fa fa-plus"></i> Tambah</a>
+                <a class="btn btn-primary btn-sm" href="{{ route('permintaan.create') }}"><i class="fa fa-plus"></i> Tambah</a>
               </div>
               
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-responsive table-bordered table-striped">
+              <table width="100%" id="example1" class="table table-responsive table-bordered table-striped">
                 <thead>
                 <tr>
                   <th width="5%">No</th>
-                  <th width="30%">Nama Pelanggan</th>
+                  <th width="25%">Nama Pelanggan</th>
                   <th>No Sampel</th>
                   <th>Jenis Sampel</th>
-                  <th width="20%">Proses</th>
-                  <th width="20%">Pembayaran</th>
+                  <th width="15%">Proses</th>
+                  <th width="15%">Pembayaran</th>
                   <th width="11%">Aksi</th>
                 </tr>
                 </thead>
@@ -68,7 +68,7 @@ Data Permintaan
                 <tr>
                   <td>{{$no}}</td>
                   <td>{{$permintaan->pelanggan->nama_pelanggan}}</td>
-                  <td>{{$permintaan->id}}</td>
+                  <td>Sam-{{$permintaan->id}}</td>
                   <td>{{$permintaan->kategori->nama_kategori}}</td>
                   @if($permintaan->status_proses === 0)
                   <td style="text-align: center;">

@@ -117,4 +117,11 @@ class PermintaanController extends Controller
         $permintaan->save();
         return redirect()->route('permintaan.index');
     }    
+
+    public function done(Permintaan $permintaan)
+    {
+        $permintaan->status_proses = 2;
+        $permintaan->save();
+        return redirect()->route('permintaan.index');
+    }
 }

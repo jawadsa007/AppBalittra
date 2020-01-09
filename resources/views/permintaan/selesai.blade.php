@@ -31,8 +31,8 @@ Belum Dikerjakan
             <td>{{ $permintaan->jumlah_contoh }}</td>
             <td>{{ $permintaan->pelanggan->nama_pelanggan }}</td>
             <td>Analis</td>
-            <td>{{ $permintaan->created_at->format('j F Y') }}</td>
-            <td>{{ $permintaan->updated_at->format('j F Y') }}</td>
+            <td>{{ $permintaan->created_at->format('d-m-Y') }}</td>
+            <td>{{ $permintaan->updated_at->format('d-m-Y') }}</td>
           </tr>
           @endforeach
         </tbody>

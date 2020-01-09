@@ -33,14 +33,16 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-responsive table-bordered table-striped">
+              <table width="100%" id="example1" class="table table-responsive table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th width="7%">No</th>
-                  <th>Nama Pelanggan</th>
-                  <th>Instansi</th>
-                  <th>Alamat</th>
-                  <th>No Telpon</th>
+                  <th width="6%">No</th>
+                  <th>ID Pelanggan</th>
+                  <th width="18%">Nama Pelanggan</th>
+                  <th width="18%">Instansi</th>
+                  <th width="18%">Alamat</th>
+                  <th width="14%">No Telpon</th>
+                  <th width="12%">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -49,10 +51,20 @@
                 <?php $no++ ?>
                 <tr>
                   <td>{{$no}}</td>
+                  <td>{{$pelanggan->created_at->format('Y')}}{{$pelanggan->id}}</td>
                   <td>{{$pelanggan->nama_pelanggan}}</td>
                   <td>{{$pelanggan->nama_instansi}}</td>
                   <td>{{$pelanggan->alamat}}</td>
                   <td>{{$pelanggan->no_telp}}</td>
+                  <td>
+                    <div class="row justify-content-md-center">
+                      <a style="margin-right: 2px" class="btn btn-default btn-xs" href="{{ route('pelanggan.laporan', $pelanggan) }}" target="_blank"><i class="fa fa-print"></i></a>
+                      <a style="margin-right: 2px" class="btn btn-warning btn-xs" href=""><i class="fa fa-edit"></i></a>
+                      <form action="">
+                        <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
+                      </form>
+                    </div>    
+                  </td>
                 </tr>
                 @endforeach
                 </tbody>

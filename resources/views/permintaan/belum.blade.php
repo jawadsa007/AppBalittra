@@ -29,8 +29,8 @@ Belum Dikerjakan
             <td>{{ $permintaan->kategori->nama_kategori }}</td>
             <td>{{ $permintaan->jumlah_contoh }}</td>
             <td>{{ $permintaan->pelanggan->nama_pelanggan }}</td>
-            <td>{{ $permintaan->created_at->format('j F Y') }}</td>
-            <td>{{ $permintaan->created_at->addDay(30)->format('j F Y') }}</td>
+            <td>{{ $permintaan->created_at->format('d-m-Y') }}</td>
+            <td>{{ $permintaan->created_at->addDay(30)->format('d-m-Y') }}</td>
           </tr>
           @endforeach
         </tbody>

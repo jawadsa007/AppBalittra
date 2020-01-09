@@ -52,10 +52,10 @@ class PelangganController extends Controller
 		return redirect()->route('pelanggan.index');
 	}
     
-    public function pdf(Pelanggan $pelanggan)
+    public function laporan(Pelanggan $pelanggan)
     {
-    	$pdf = PDF::loadView('pelanggan.pdf', compact('pelanggan'));
-    	$pdf->setPaper('A4', 'landscape');
-    	return $pdf->stream();
+    	$total = $pelanggan->permintaan->count();
+    	
+    	return view('pelanggan.laporan', compact('pelanggan', 'total'));
     }
 }

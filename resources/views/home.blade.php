@@ -1,5 +1,9 @@
 @extends('layouts.master')
 
+@section('title')
+Dashboard
+@endsection
+
 @section('content_header')  
     <div class="content-header">
       <div class="container-fluid">

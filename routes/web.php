@@ -26,7 +26,8 @@ Route::post('/tambah-pelanggan', 'PelangganController@store')->name('pelanggan.s
 Route::get('/edit-data-pelanggan/{pelanggan}', 'PelangganController@edit')->name('pelanggan.edit');
 Route::patch('/edit-data-pelanggan/{pelanggan}', 'PelangganController@update')->name('pelanggan.update');
 Route::delete('/hapus-data-pelanggan/{pelanggan}', 'PelangganController@destroy')->name('pelanggan.destroy');
-Route::get('/laporan-pelanggan/{pelanggan}', 'PelangganController@pdf')->name('pelanggan.pdf');
+Route::get('/laporan-pelanggan/{pelanggan}', 'PelangganController@laporan')->name('pelanggan.laporan');
+
 
 //Permintaan
 Route::get('/data-permintaan', 'PermintaanController@index')->name('permintaan.index');
@@ -44,3 +45,4 @@ Route::get('/cetak-permintaan-selesai', 'PermintaanController@selesai')->name('p
 Route::get('/detail-permintaan/{permintaan}', 'PermintaanController@detail')->name('permintaan.detail');
 Route::get('/proses-permintaan/{permintaan}', 'PermintaanController@proses')->name('permintaan.proses');
 Route::patch('/proses-permintaan/{permintaan}', 'PermintaanController@kerjakan')->name('permintaan.kerjakan');
+Route::patch('/proses-selesai-permintaan/{permintaan}', 'PermintaanController@done')->name('permintaan.done');

@@ -91,7 +91,7 @@ Pembayaran
                     <tr>
                       <th>No</th>
                       <th>Jenis Analisa</th>
-                      <th>Subtotal</th>
+                      <th>Biaya</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -101,7 +101,7 @@ Pembayaran
                     <tr>
                       <td>{{ $no }}</td>
                       <td>{{ $analisa->nama_analisa }}</td>
-                      <td>Rp {{ $analisa->harga }}</td>
+                      <td>@currency( $analisa->harga )</td>
                     </tr>   
                     @endforeach
                     </tbody>
@@ -114,21 +114,19 @@ Pembayaran
               <div class="row justify-content-end">
                 <!-- accepted payments column -->
                 <div class="col-6">
-                  <p class="lead">Amount Due 2/22/2014</p>
-
                   <div class="table-responsive">
                     <table class="table">
                       <tr>
                         <th style="width:50%">Subtotal:</th>
-                        <td>Rp {{ $subtotal }}</td>
+                        <td>@currency($subtotal)</td>
                       </tr>
                       <tr>
                         <th>PPN (5%)</th>
-                        <td>Rp {{$pajak}}</td>
+                        <td>@currency($pajak)</td>
                       </tr>
                       <tr>
                         <th>Total:</th>
-                        <td>Rp {{ $total }}</td>
+                        <td>@currency($total)</td>
                       </tr>
                     </table>
                   </div>
@@ -147,6 +145,7 @@ Pembayaran
                     <button type="submit" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Bayar
                   </button>
                   </form>
+                  <a style="margin-right: 4px" href="{{ route('permintaan.index') }}" class="btn btn-primary float-right"><i class="fa fa-arrow-left"></i> Kembali</a>
                   @else
                   <a href="{{ route('permintaan.index') }}" class="btn btn-primary float-right"><i class="fa fa-arrow-left"></i> Kembali</a>
                   @endif
