@@ -16,6 +16,16 @@ class Permintaan extends Model
 
     public function kategori()
     {
-    	return $this->hasOne('App\Kategori');
+    	return $this->belongsTo('App\Kategori');
+    }
+
+    public function pelanggan()
+    {
+    	return $this->belongsTo('App\Pelanggan');
+    }
+
+    public function analis()
+    {
+        return $this->hasOne('App\Analis');
     }
 }

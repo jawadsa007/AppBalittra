@@ -7,14 +7,15 @@ use App\Permintaan;
 use App\Pelanggan;
 use App\Kategori;
 use App\Analisa;
+use App\Analis;
 use PDF;
 
 class PermintaanController extends Controller
 {
     public function index()
     {
-    	$permintaan =Permintaan::all();
-    	return view('permintaan.index', compact('permintaan'));
+    	$permintaans =Permintaan::all();
+    	return view('permintaan.index', compact('permintaans'));
     }
 
     public function create()
@@ -52,4 +53,68 @@ class PermintaanController extends Controller
     {
     	
     }
+
+    public function pembayaran(Permintaan $permintaan)
+    {
+        $subtotal = $permintaan->analisa->sum('harga');
+        $pajak = ($subtotal*5)/100;
+        $total = $subtotal + $pajak;
+        return view('permintaan.bayar', compact('permintaan', 'subtotal', 'total', 'pajak'));
+    }
+
+    public function bayar(Request $request, Permintaan $permintaan)
+    {
+        $subtotal = $permintaan->analisa->sum('harga');
+        $pajak = ($subtotal*5)/100;
+        $total = $subtotal + $pajak;
+
+        $permintaan->bayar = $total;
+        $permintaan->save();
+        return redirect()->route('permintaan.index');
+    }
+
+    public function nota(Permintaan $permintaan)
+    {
+        $subtotal = $permintaan->analisa->sum('harga');
+        $pajak = ($subtotal*5)/100;
+        $total = $subtotal + $pajak;
+        return view('permintaan.nota', compact('permintaan', 'subtotal', 'pajak', 'total'));
+    }
+
+    public function belum()
+    {
+        $permintaans = Permintaan::where('status_proses', 0)->get();
+        return view('permintaan.belum', compact('permintaans'));
+    }
+
+    public function sedang()
+    {
+        $permintaans = Permintaan::where('status_proses', 1)->get();
+        return view('permintaan.sedang', compact('permintaans'));
+    }
+
+    public function selesai()
+    {
+        $permintaans = Permintaan::where('status_proses', 2)->get();
+        return view('permintaan.selesai', compact('permintaans'));
+    }
+
+    public function detail(Permintaan $permintaan)
+    {
+        return view('permintaan.detail', compact('permintaan'));
+    }
+
+    public function proses(Permintaan $permintaan)
+    {
+        $analis = Analis::all();
+        return view('permintaan.proses', compact('permintaan', 'analis'));
+    }
+
+    public function kerjakan(Request $request, Permintaan $permintaan)
+    {
+        $permintaan->status_proses = 1;
+        $permintaan->analis_id = $request->analis_id;
+        $permintaan->save();
+        return redirect()->route('permintaan.index');
+    }    
 }

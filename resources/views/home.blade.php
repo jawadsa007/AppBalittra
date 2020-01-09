@@ -1,4 +1,4 @@
-  @extends('layouts.master')
+@extends('layouts.master')
 
 @section('content_header')  
     <div class="content-header">
@@ -19,8 +19,8 @@
  @endsection
 
 @section('content')
-        <div class="row">
-          <div class="col-lg-3 col-6">
+    <div class="row">
+        <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
@@ -79,7 +79,5 @@
               <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
-          <!-- ./col -->
-        </div>
-
-  @endsection
+    </div>        
+@endsection

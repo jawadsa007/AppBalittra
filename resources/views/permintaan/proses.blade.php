@@ -1,7 +1,9 @@
 @extends('layouts.master')
 
-@section('title')
-Tambah Data Pelanggan
+@section('link')
+<!-- Select2 -->
+  <link rel="stylesheet" href="../../plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 @endsection
 
 @section('content_header')
@@ -13,7 +15,7 @@ Tambah Data Pelanggan
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
+              <li class="breadcrumb-item"><a href="#">Permintaan</a></li>
               <li class="breadcrumb-item active">Tambah</li>
             </ol>
           </div><!-- /.col -->
@@ -29,28 +31,21 @@ Tambah Data Pelanggan
  		<div class="col-lg-10">
  			<div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Form Tambah Data Pelanggan</h3>
+                <h3 class="card-title">Form Tambah Data Permintaan</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form role="form" action="{{ route('pelanggan.store') }}" method="post">
+              <form role="form" action="{{ route('permintaan.kerjakan', $permintaan) }}" method="post">
               	@csrf
+                @method('patch')
                 <div class="card-body">
                   <div class="form-group">
-                    <label for="nama_pelanggan">Nama Pelanggan</label>
-                    <input type="text" name="nama_pelanggan" class="form-control" id="nama_pelanggan" placeholder="Masukkan nama pelanggan">
-                  </div>
-                  <div class="form-group">
-                    <label for="nama_instansi">Instansi</label>
-                    <input type="text" name="nama_instansi" class="form-control" id="nama_instansi" placeholder="Masukkan instansi">
-                  </div>
-                  <div class="form-group">
-                    <label for="alamat">Alamat</label>
-                    <textarea name="alamat" rows="3" class="form-control"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="no_telp">Nomor Telpon</label>
-                    <input type="number" name="no_telp" class="form-control" id="no_telp" placeholder="Masukkan nomor telpon">
+                    <label for="analis">Analis</label>
+                    <select class="form-control" name="analis_id" id="analis">
+                      @foreach($analis as $data)
+                      <option value="{{ $data->id }}">{{ $data->nama_analis }}</option>
+                      @endforeach
+                    </select>
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -64,4 +59,19 @@ Tambah Data Pelanggan
  		</div>
  	</div>
 
+@endsection
+
+@section('script')
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+  })
+</script>
 @endsection

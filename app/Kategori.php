@@ -11,8 +11,8 @@ class Kategori extends Model
     	return $this->hasOne('App\Analisa');
     }
 
-	public function permintaa()
+	public function permintaan()
     {
-    	return $this->belongsTo('App\Permintaan');
+    	return $this->hasMany('App\Permintaan');
     }    
 }
