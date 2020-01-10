@@ -47,12 +47,12 @@
                   <p>Permintaan</p>
                 </a>
               </li>
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="./index2.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Hasil Analisa</p>
                 </a>
-              </li>
+              </li> --}}
             </ul>
           </li>
           <li class="nav-item">
@@ -64,7 +64,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a href="{{ route('pendapatan.index') }}" class="nav-link">
               <i class="nav-icon fas fa-file-invoice-dollar"></i>
               <p>
                 Pendapatan

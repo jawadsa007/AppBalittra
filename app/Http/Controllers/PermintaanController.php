@@ -9,7 +9,7 @@ use App\Kategori;
 use App\Analisa;
 use App\Analis;
 use PDF;
-
+use Carbon\Carbon;
 class PermintaanController extends Controller
 {
     public function index()
@@ -49,9 +49,11 @@ class PermintaanController extends Controller
     	
     }
 
-    public function destroy()
+    public function destroy(Permintaan $permintaan)
     {
-    	
+    	$permintaan->analisa()->detach();
+        $permintaan->delete();
+        return redirect()->route('permintaan.index');
     }
 
     public function pembayaran(Permintaan $permintaan)
@@ -78,7 +80,8 @@ class PermintaanController extends Controller
         $subtotal = $permintaan->analisa->sum('harga');
         $pajak = ($subtotal*5)/100;
         $total = $subtotal + $pajak;
-        return view('permintaan.nota', compact('permintaan', 'subtotal', 'pajak', 'total'));
+         $tgl = Carbon::now()->locale("id_ID");;
+        return view('permintaan.nota', compact('permintaan', 'subtotal', 'pajak', 'total', 'tgl'));
     }
 
     public function belum()

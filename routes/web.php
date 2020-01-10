@@ -46,3 +46,8 @@ Route::get('/detail-permintaan/{permintaan}', 'PermintaanController@detail')->na
 Route::get('/proses-permintaan/{permintaan}', 'PermintaanController@proses')->name('permintaan.proses');
 Route::patch('/proses-permintaan/{permintaan}', 'PermintaanController@kerjakan')->name('permintaan.kerjakan');
 Route::patch('/proses-selesai-permintaan/{permintaan}', 'PermintaanController@done')->name('permintaan.done');
+
+//pendapatan
+Route::get('/pendapatan', 'PendapatanController@index')->name('pendapatan.index');
+Route::get('/pendapatan/filter', 'PendapatanController@filter')->name('pendapatan.filter');
+Route::get('/pendapatan/laporan', 'PendapatanController@laporan')->name('pendapatan.laporan');

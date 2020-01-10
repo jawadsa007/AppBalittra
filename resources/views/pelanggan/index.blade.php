@@ -33,7 +33,8 @@
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table width="100%" id="example1" class="table table-responsive table-bordered table-striped">
+              <div class="col-12 table-responsive"></div>
+              <table width="100%" id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th width="6%">No</th>
@@ -60,15 +61,13 @@
                     <div class="row justify-content-md-center">
                       <a style="margin-right: 2px" class="btn btn-default btn-xs" href="{{ route('pelanggan.laporan', $pelanggan) }}" target="_blank"><i class="fa fa-print"></i></a>
                       <a style="margin-right: 2px" class="btn btn-warning btn-xs" href=""><i class="fa fa-edit"></i></a>
-                      <form action="">
-                        <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
-                      </form>
                     </div>    
                   </td>
                 </tr>
                 @endforeach
                 </tbody>
               </table>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>

@@ -48,6 +48,11 @@ nota
                         <th>:</th>
                         <td>{{ $permintaan->pelanggan->no_telp }}</td>
                       </tr>
+                      <tr>
+                        <th>Tanggal Selesai</th>
+                        <th>:</th>
+                        <td>{{ $permintaan->updated_at->format('d-m-Y') }}</td>
+                      </tr>
                     </thead>
                     <tbody>
                       <tr>
@@ -63,6 +68,7 @@ nota
 
               <!-- Table row -->
               <div class="row">
+                <legend>Detail Biaya</legend>
                 <div class="col-12 table-responsive">
                   <table class="table table-striped">
                     <thead>
@@ -92,7 +98,6 @@ nota
               <div class="row justify-content-end">
                 <!-- accepted payments column -->
                 <div class="col-6">
-                  <p class="lead">Amount Due 2/22/2014</p>
 
                   <div class="table-responsive">
                     <table class="table">
@@ -114,6 +119,30 @@ nota
                 <!-- /.col -->
               </div>
               <!-- /.row -->
+              <div style="margin-top: 100px" class="row justify-content-between">
+                <div class="col-3">
+                  <br>
+                  <h6 style="text-align: center;">Pemohon Analisa</h6>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <h6 style="text-align: center;">{{ $permintaan->pelanggan->nama_pelanggan }}</h6>
+                  
+                </div>
+                <div class="col-3">
+                  <h6 style="text-align: center;">Banjarbaru, {{ $tgl->format('d-m-Y') }}</h6>
+                  
+                  <h6 style="text-align: center;">Admin</h6>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <h6 style="text-align: center;">{{ Auth::user()->name }}</h6>
+                </div>
+              </div>
             </div>
             <!-- /.invoice -->
           </div><!-- /.col -->

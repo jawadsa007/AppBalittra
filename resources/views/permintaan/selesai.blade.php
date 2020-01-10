@@ -20,7 +20,7 @@ Belum Dikerjakan
             <th>Nama Pelanggan</th>
             <th>Analis</th>
             <th>Tanggal Diterima</th>
-            <th>Tanggal Perkiraan Selesai</th>
+            <th>Tanggal Selesai</th>
           </tr>
         </thead>
         <tbody>

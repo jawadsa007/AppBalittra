@@ -129,12 +129,14 @@ Detail-Permintaan
                   <a href="{{ route('permintaan.index') }}" class="btn btn-primary float-right"><i class="fa fa-arrow-left"></i> Kembali</a>
                   @if($permintaan->status_proses === 0)
                   <a href="{{ route('permintaan.proses', $permintaan) }}" class="btn btn-default"><i class="fas fa-print"></i> Proses</a>
-                  @else
+                  @elseif($permintaan->status_proses === 1)
                   <form action="{{ route('permintaan.done', $permintaan) }}" method="post">
                     @csrf
                     @method('patch')
                     <button type="submit" class="btn btn-primary">Analisa Selesai</button>
                   </form>
+                  @else
+                  
                   @endif
                 </div>
               </div>

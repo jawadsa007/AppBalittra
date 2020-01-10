@@ -14,12 +14,12 @@ Data Permintaan
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Pelanggan</h1>
+            <h1 class="m-0 text-dark">Permintaan Analisa</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
-              <li class="breadcrumb-item active">Data Pelanggan</li>
+              <li class="breadcrumb-item"><a href="#">Permintaan Analisa</a></li>
+              <li class="breadcrumb-item active">Data Permintaan</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -32,7 +32,7 @@ Data Permintaan
 		<div class="col-lg-12">
 			<div class="card">
             <div class="card-header">
-              <h3 class="card-title">Data Pelanggan</h3>
+              <h3 class="card-title">Data Permintaan</h3>
               <div class="row justify-content-end">
                 <div style="margin-right: 3px" class="btn-group">
                   <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-print"></i> Cetak
@@ -40,7 +40,7 @@ Data Permintaan
                   <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('permintaan.belum') }}" target="_blank">Belum Dikerjakan</a>
                     <a class="dropdown-item" href="{{ route('permintaan.sedang') }}" target="_blank">Sedang Dikerjakan</a>
-                    <a class="dropdown-item" href="{{ route('permintaan.sedang') }}" target="_blank">Selesai</a>
+                    <a class="dropdown-item" href="{{ route('permintaan.selesai') }}" target="_blank">Selesai</a>
                   </div>
                 </div>
                 <a class="btn btn-primary btn-sm" href="{{ route('permintaan.create') }}"><i class="fa fa-plus"></i> Tambah</a>
@@ -49,7 +49,8 @@ Data Permintaan
             </div>
             <!-- /.card-header -->
             <div class="card-body">
-              <table width="100%" id="example1" class="table table-responsive table-bordered table-striped">
+              <div class="col-12 table-responsive"></div>
+              <table width="100%" id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th width="5%">No</th>
@@ -68,7 +69,7 @@ Data Permintaan
                 <tr>
                   <td>{{$no}}</td>
                   <td>{{$permintaan->pelanggan->nama_pelanggan}}</td>
-                  <td>Sam-{{$permintaan->id}}</td>
+                  <td>{{$permintaan->id}}</td>
                   <td>{{$permintaan->kategori->nama_kategori}}</td>
                   @if($permintaan->status_proses === 0)
                   <td style="text-align: center;">
@@ -98,8 +99,10 @@ Data Permintaan
                       <a style="margin-right: 2px" class="btn btn-info btn-xs" href="{{ route('permintaan.detail', $permintaan) }}"><i class="fa fa-info"></i></a>
                       <a style="margin-right: 2px" class="btn btn-success btn-xs" href="{{ route('permintaan.pembayaran', $permintaan) }}"><i class="fa fa-hand-holding-usd"></i></a>
                       <a style="margin-right: 2px" class="btn btn-warning btn-xs" href=""><i class="fa fa-edit"></i></a>
-                      <form action="">
-                        <button class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
+                      <form action="{{ route('permintaan.destroy', $permintaan) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i></button>
                       </form>
                     </div>    
                   </td>
@@ -107,6 +110,7 @@ Data Permintaan
                 @endforeach
                 </tbody>
               </table>
+              </div>
             </div>
             <!-- /.card-body -->
           </div>

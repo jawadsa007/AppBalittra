@@ -81,7 +81,7 @@ Detail-Permintaan
                     <tr>
                       <td style="text-align: center;">{{ $no }}</td>
                       <td style="text-align: center;">{{ $permintaan->judul_penelitian }}</td>
-                      <td style="text-align: center;">Sam-{{ $permintaan->id }}</td>
+                      <td style="text-align: center;">{{ $permintaan->id }}</td>
                       <td style="text-align: center;">{{ $permintaan->created_at->format('d-m-Y') }}</td>
                       @if($permintaan->status_proses === 0 )
                       <td style="text-align: center;">{{ $permintaan->created_at->addDay(30)->format('d-m-Y') }}</td>
