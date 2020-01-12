@@ -98,3 +98,65 @@ Pendapatan
           </div><!-- /.col -->
         </div><!-- /.row -->
 @endsection
+
+
+@section('script')
+<!-- FLOT CHARTS -->
+<script src="../../plugins/flot/jquery.flot.js"></script>
+<!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
+<script src="../../plugins/flot-old/jquery.flot.resize.min.js"></script>
+<!-- FLOT PIE PLUGIN - also used to draw donut charts -->
+<script src="../../plugins/flot-old/jquery.flot.pie.min.js"></script>
+<!-- Page script -->
+<script>
+  $(function () {
+    /*
+     * Flot Interactive Chart
+     * -----------------------
+     */
+    // We use an inline data source in the example, usually data would
+    // be fetched from a server
+
+
+
+    /*
+     * BAR CHART
+     * ---------
+     */
+
+    var bar_data = {
+      data : [[1,{{ $jan}}], [2,{{ $feb }}], [3,{{ $mar }}], [4,{{ $apr }}], [5,{{ $mei }}], [6,{{ $jun }}], [7,{{ $jul }}], [8,{{ $ags }}], [9,{{ $sep }}],[10,{{ $okt }}], [11,{{ $nov }}], [12,{{ $des }}]],
+      bars: { show: true }
+    }
+    $.plot('#bar-chart', [bar_data], {
+      grid  : {
+        borderWidth: 1,
+        borderColor: '#f3f3f3',
+        tickColor  : '#f3f3f3'
+      },
+      series: {
+         bars: {
+          show: true, barWidth: 0.5, align: 'center',
+        },
+      },
+      colors: ['#3c8dbc'],
+      xaxis : {
+        ticks: [[1,'Jan'], [2,'Feb'], [3,'Mar'], [4,'Apr'], [5,'Mei'], [6,'Jun'], [7,'Jun'], [8,'Ags'], [9,'Sep'], [10,'Okt'], [11,'Nov'], [12,'Des']]
+      }
+    })
+    /* END BAR CHART */
+
+  })
+
+  /*
+   * Custom Label formatter
+   * ----------------------
+   */
+  function labelFormatter(label, series) {
+    return '<div style="font-size:13px; text-align:center; padding:2px; color: #fff; font-weight: 600;">'
+      + label
+      + '<br>'
+      + Math.round(series.percent) + '%</div>'
+  }
+</script>
+@endsection

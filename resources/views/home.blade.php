@@ -85,17 +85,17 @@ Dashboard
           </div>
     </div>  --}}
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-8">
         <div class="card card-primary card-outline">
             <div class="card-header">
                 <h3 class="card-title">
                   <i class="far fa-chart-bar"></i>
-                  Grafik Pendapatan Tahun {{$tahun->format('Y')}}
+                  Grafik Pendapatan Tahun {{$tahun}}
                 </h3>
               </div>
           <div class="card-body">
             <label for="bar-chart">Rupiah (Rp)</label>
-            <div id="bar-chart" style="height: 450px;"></div>
+            <div id="bar-chart" style="height: 400px;"></div>
           </div>
           <div class="card-footer">
             <a class="small-box-footer" href="">Detail <i class="fas fa-arrow-circle-right"></i></a>
@@ -106,16 +106,7 @@ Dashboard
 @endsection
 
 @section('script')
-<!-- jQuery -->
-<script src="../../plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI -->
-<script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="../../dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="../../dist/js/demo.js"></script>
+
 <!-- FLOT CHARTS -->
 <script src="../../plugins/flot/jquery.flot.js"></script>
 <!-- FLOT RESIZE PLUGIN - allows the chart to redraw when the window is resized -->
@@ -140,7 +131,7 @@ Dashboard
      */
 
     var bar_data = {
-      data : [[1,{{ $jan}}], [2,{{ $feb }}], [3,{{ $mar }}], [4,{{ $apr }}], [5,{{ $mei }}], [6,{{ $jun }}], [7,{{ $jul }}], [8,{{ $ags }}], [9,{{ $sep }}],[10,{{ $okt }}], [11,{{ $nov }}], [12,{{ $des }}]],
+      data : [[1,{{ $data[1]}}], [2, {{ $data[2]}}], [3, {{ $data[3]}}], [4, {{ $data[4]}}], [5, {{ $data[5]}}], [6, {{ $data[6]}}], [7, {{ $data[7]}}], [8, {{ $data[8]}}], [9, {{ $data[9]}}],[10, {{ $data[10]}}], [11, {{ $data[11]}}], [12, {{ $data[12]}}]],
       bars: { show: true }
     }
     $.plot('#bar-chart', [bar_data], {

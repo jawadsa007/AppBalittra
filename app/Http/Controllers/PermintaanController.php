@@ -80,7 +80,7 @@ class PermintaanController extends Controller
         $subtotal = $permintaan->analisa->sum('harga');
         $pajak = ($subtotal*5)/100;
         $total = $subtotal + $pajak;
-         $tgl = Carbon::now()->locale("id_ID");;
+         $tgl = Carbon::now()->locale("id_ID");
         return view('permintaan.nota', compact('permintaan', 'subtotal', 'pajak', 'total', 'tgl'));
     }
 
